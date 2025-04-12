@@ -40,11 +40,11 @@ public class CustomOAuth2SuccessHandler implements AuthenticationSuccessHandler 
             newUser.setEmail(email); //set email
             newUser.setUsername(name);
             newUser.setPassword(""); // social login user
-            newUser.setRoles(Set.of(Role.USER));
+            newUser.setRoles(Set.of(Role.USER)); 
             return userRepository.save(newUser);
         });
 
         String token = jwtUtil.generateToken(email);
-        response.sendRedirect("http://localhost:3000/oauth-success?token=" + token);
+        response.sendRedirect("http://localhost:3000/oauth-success?token=" + token); // get token
     }
 }
