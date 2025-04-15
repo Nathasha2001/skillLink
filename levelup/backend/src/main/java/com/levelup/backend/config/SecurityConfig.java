@@ -27,6 +27,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .cors(cors -> cors.configure(http))
                 .authorizeHttpRequests(auth -> auth
+                // Allow access to uploaded files
                 .requestMatchers("/api/auth/**", "/oauth2/**").permitAll()
                 .requestMatchers("/uploads/**").permitAll()
                 .anyRequest().authenticated()
