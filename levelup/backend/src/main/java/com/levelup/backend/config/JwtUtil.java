@@ -38,7 +38,7 @@ public class JwtUtil {
         Claims claims = Jwts.parserBuilder()
                 .setSigningKey(getSigningKey())
                 .build()
-                .parseClaimsJws(token)
+                .parseClaimsJws(token)// Returns the subject (email) from the token
                 .getBody();
         return claims.getSubject();
     }
