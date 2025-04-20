@@ -11,6 +11,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 
+// Marks this class as a Spring-managed component
 @Component
 public class JwtUtil {
 
