@@ -20,7 +20,7 @@ public class JwtUtil {
 
     @Value("${spring.security.jwt.expiration}")
     private long expiration;
-
+     // Generates a signing key from the secret
     private Key getSigningKey() {
         return Keys.hmacShaKeyFor(secret.getBytes());
     }
