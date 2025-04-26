@@ -20,7 +20,7 @@ public class JwtUtil {
     @Value("${spring.security.jwt.expiration}")
     private long expiration;
 
-    private Key getSigningKey() {
+    private Key getSigningKey() {//get signing key
         return Keys.hmacShaKeyFor(secret.getBytes());
     }
 
