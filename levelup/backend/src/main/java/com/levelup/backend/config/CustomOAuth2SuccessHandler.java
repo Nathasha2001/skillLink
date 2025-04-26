@@ -7,7 +7,7 @@ import java.util.Set;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Component; 
 
 import com.levelup.backend.entity.Role;
 import com.levelup.backend.entity.User;
@@ -21,7 +21,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class CustomOAuth2SuccessHandler implements AuthenticationSuccessHandler {
 
     private final UserRepository userRepository;
-    private final JwtUtil jwtUtil;
+    private final JwtUtil jwtUtil; 
 
     public CustomOAuth2SuccessHandler(UserRepository userRepository, JwtUtil jwtUtil) {
         this.userRepository = userRepository;
