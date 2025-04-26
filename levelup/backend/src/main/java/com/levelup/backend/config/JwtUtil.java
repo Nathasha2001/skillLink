@@ -24,7 +24,7 @@ public class JwtUtil {
         return Keys.hmacShaKeyFor(secret.getBytes());
     }
 
-    public String generateToken(String email) {
+    public String generateToken(String email) {//generate token
         return Jwts.builder()
                 .setSubject(email)
                 .setIssuedAt(new Date())
@@ -33,7 +33,7 @@ public class JwtUtil {
                 .compact();
     }
 
-    public String extractEmail(String token) {
+    public String extractEmail(String token) {//extract email from token
         Claims claims = Jwts.parserBuilder()
                 .setSigningKey(getSigningKey())
                 .build()
