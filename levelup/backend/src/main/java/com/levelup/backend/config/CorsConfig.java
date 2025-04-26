@@ -18,7 +18,7 @@ public class CorsConfig {
                         .allowedMethods("*")
                         .allowedHeaders("*")
                         .allowCredentials(true)
-                        .exposedHeaders("Authorization");
+                        .exposedHeaders("Authorization");//set authorizatio
             }
         };
     }
