@@ -37,7 +37,7 @@ public class CustomOAuth2SuccessHandler implements AuthenticationSuccessHandler 
 
         User user = userRepository.findByEmail(email).orElseGet(() -> {
             User newUser = new User();
-            newUser.setEmail(email);
+            newUser.setEmail(email); //set email
             newUser.setUsername(name);
             newUser.setPassword(""); // social login user
             newUser.setRoles(Set.of(Role.USER));
