@@ -22,12 +22,12 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     @SuppressWarnings("CallToPrintStackTrace")
-    public ResponseEntity<Map<String, String>> handleGenericException(Exception ex) {
+    public ResponseEntity<Map<String, String>> handleGenericException(Exception ex) { //try catch block
         ex.printStackTrace(); // <-- add this line to log to console
         Map<String, String> error = new HashMap<>();
         error.put("error", "An unexpected error occurred.");
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
-    }
+    } 
 
     @ExceptionHandler(MaxUploadSizeExceededException.class)
     public ResponseEntity<Map<String, String>> handleMaxSizeException(MaxUploadSizeExceededException ex) {
