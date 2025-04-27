@@ -45,13 +45,13 @@ public class AuthController {
     @Autowired
     private com.levelup.backend.config.JwtUtil jwtUtil;
     @Autowired
-    private com.levelup.backend.repository.UserRepository userRepository;
+    private com.levelup.backend.repository.UserRepository userRepository; //changes01
     @Value("${file.upload-dir}")
     private String uploadDir;
     @Autowired
     private LearningPlanRepository learningPlanRepository;
     @Autowired
-    private PostRepository postRepository;
+    private PostRepository postRepository;  //changes02
     @Autowired
     private FollowRepository followRepository;
     @Autowired
