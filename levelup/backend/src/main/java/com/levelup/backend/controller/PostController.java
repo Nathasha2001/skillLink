@@ -129,7 +129,7 @@ public class PostController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deletePost(@PathVariable Long id, Principal principal) {
         postService.deletePostByIdAndUser(id, principal.getName());
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok().build(); 
     }
 
     @PostMapping("/{postId}/like")
@@ -137,12 +137,12 @@ public class PostController {
         return ResponseEntity.ok(postService.toggleLike(postId, principal.getName()));
     }
 
-    @GetMapping("/{postId}/like-status")
+    @GetMapping("/{postId}/like-status") //get like status
     public ResponseEntity<Map<String, Object>> getLikeStatus(@PathVariable Long postId, Principal principal) {
         Post post = postService.getAllPosts().stream()
                 .filter(p -> p.getId().equals(postId))
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("Post not found"));
+                .orElseThrow(() -> new RuntimeException("Post not found")); 
 
         boolean liked = postService.isLikedByUser(postId, principal.getName());
         int likeCount = post.getLikedBy().size();
