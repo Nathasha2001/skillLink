@@ -33,7 +33,7 @@ public class JwtUtil {
                 .compact();
     }
 
-    public String extractEmail(String token) {//extract email from token
+    public String extractEmail(String token) {//extract email from token 
         Claims claims = Jwts.parserBuilder()
                 .setSigningKey(getSigningKey())
                 .build()
