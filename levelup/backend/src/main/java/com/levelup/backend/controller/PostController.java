@@ -114,7 +114,7 @@ public class PostController {
                 try {
                     String filename = System.currentTimeMillis() + "_" + StringUtils.cleanPath(file.getOriginalFilename());
                     Path path = Paths.get(uploadDir, filename);
-                    Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+                    Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);// saving file to the server
                     filePaths.add("/uploads/" + filename);
                 } catch (IOException e) {
                     e.printStackTrace();
