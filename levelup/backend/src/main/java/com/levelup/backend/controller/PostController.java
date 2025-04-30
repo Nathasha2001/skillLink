@@ -112,7 +112,7 @@ public class PostController {
         if (files != null) {
             for (MultipartFile file : files) {
                 try {
-                    String filename = System.currentTimeMillis() + "_" + StringUtils.cleanPath(file.getOriginalFilename());
+                    String filename = System.currentTimeMillis() + "_" + StringUtils.cleanPath(file.getOriginalFilename()); //generating a unique name
                     Path path = Paths.get(uploadDir, filename);
                     Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);// saving file to the server
                     filePaths.add("/uploads/" + filename);
