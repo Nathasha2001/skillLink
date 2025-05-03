@@ -147,7 +147,7 @@ public class PostController {
         boolean liked = postService.isLikedByUser(postId, principal.getName()); //checking if user has liked the post
         int likeCount = post.getLikedBy().size();
 
-        return ResponseEntity.ok(Map.of(
+        return ResponseEntity.ok(Map.of( //return like status
                 "liked", liked,
                 "likeCount", likeCount
         ));
