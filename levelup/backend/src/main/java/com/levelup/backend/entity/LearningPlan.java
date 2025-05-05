@@ -41,8 +41,7 @@ public class LearningPlan {
     @OnDelete(action = OnDeleteAction.CASCADE) // ✅ This enables cascade delete
     private User user;
 
-    // --- Constructors ---
-    public LearningPlan() {
+     {
     }
 
     public LearningPlan(Long id, String title, List<String> topics, List<String> resources,
