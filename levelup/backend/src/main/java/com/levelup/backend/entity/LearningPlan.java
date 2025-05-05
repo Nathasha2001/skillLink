@@ -20,7 +20,7 @@ import jakarta.persistence.Table;
 @Table(name = "learning_plans")
 public class LearningPlan {
 
-    @Id
+    @Id //id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -109,6 +109,7 @@ public class LearningPlan {
         return user;
     }
 
-    
+    public void setUser(User user) {
+        this.user = user;
     }
 }
