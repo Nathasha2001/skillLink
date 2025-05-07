@@ -69,7 +69,9 @@ public class LearningPlan {
         return title;
     }
 
-    
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public List<String> getTopics() {
         return topics;
