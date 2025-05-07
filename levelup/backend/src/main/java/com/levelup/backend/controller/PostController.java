@@ -108,7 +108,7 @@ public class PostController {
             @RequestPart("description") String description,
             @RequestPart(value = "files", required = false) MultipartFile[] files,
             Principal principal) {
-        List<String> filePaths = new ArrayList<>();
+        List<String> filePaths = new ArrayList<>(); //list storing
         if (files != null) {
             for (MultipartFile file : files) {
                 try {
