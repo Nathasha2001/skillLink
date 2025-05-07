@@ -93,7 +93,7 @@ public class PostController {
 
     @GetMapping("/all")
     public List<Post> getAllPosts() {
-        return postService.getAllPosts();
+        return postService.getAllPosts(); //get all posts
     }
 
     @GetMapping("/{id}")
