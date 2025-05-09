@@ -38,7 +38,7 @@ import com.levelup.backend.service.PostService;
 @RequestMapping("/api/posts")
 public class PostController {
 
-    @Value("${file.upload-dir}")
+    @Value("${file.upload-dir}") //path to direct from app config
     private String uploadDir;
 
     @Autowired
