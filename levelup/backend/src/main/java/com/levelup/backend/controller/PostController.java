@@ -42,7 +42,7 @@ public class PostController {
     private String uploadDir;
 
     @Autowired
-    private PostService postService;
+    private PostService postService; 
 
     @Autowired
     private UserRepository userRepository;
@@ -93,7 +93,7 @@ public class PostController {
 
     @GetMapping("/all")
     public List<Post> getAllPosts() {
-        return postService.getAllPosts(); //get all posts
+        return postService.getAllPosts();
     }
 
     @GetMapping("/{id}")
