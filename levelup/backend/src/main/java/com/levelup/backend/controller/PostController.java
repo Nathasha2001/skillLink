@@ -38,11 +38,11 @@ import com.levelup.backend.service.PostService;
 @RequestMapping("/api/posts")
 public class PostController {
 
-    @Value("${file.upload-dir}")
+    @Value("${file.upload-dir}") //path to direct from app config
     private String uploadDir;
 
     @Autowired
-    private PostService postService;
+    private PostService postService; 
 
     @Autowired
     private UserRepository userRepository;
@@ -108,13 +108,13 @@ public class PostController {
             @RequestPart("description") String description,
             @RequestPart(value = "files", required = false) MultipartFile[] files,
             Principal principal) {
-        List<String> filePaths = new ArrayList<>();
+        List<String> filePaths = new ArrayList<>(); //list storing
         if (files != null) {
             for (MultipartFile file : files) {
                 try {
-                    String filename = System.currentTimeMillis() + "_" + StringUtils.cleanPath(file.getOriginalFilename());
+                    String filename = System.currentTimeMillis() + "_" + StringUtils.cleanPath(file.getOriginalFilename()); //generating a unique name
                     Path path = Paths.get(uploadDir, filename);
-                    Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+                    Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);// saving file to the server
                     filePaths.add("/uploads/" + filename);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -129,7 +129,7 @@ public class PostController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deletePost(@PathVariable Long id, Principal principal) {
         postService.deletePostByIdAndUser(id, principal.getName());
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok().build(); 
     }
 
     @PostMapping("/{postId}/like")
@@ -137,17 +137,17 @@ public class PostController {
         return ResponseEntity.ok(postService.toggleLike(postId, principal.getName()));
     }
 
-    @GetMapping("/{postId}/like-status")
+    @GetMapping("/{postId}/like-status") //get like status
     public ResponseEntity<Map<String, Object>> getLikeStatus(@PathVariable Long postId, Principal principal) {
         Post post = postService.getAllPosts().stream()
                 .filter(p -> p.getId().equals(postId))
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("Post not found"));
+                .orElseThrow(() -> new RuntimeException("Post not found")); 
 
-        boolean liked = postService.isLikedByUser(postId, principal.getName());
+        boolean liked = postService.isLikedByUser(postId, principal.getName()); //checking if user has liked the post
         int likeCount = post.getLikedBy().size();
 
-        return ResponseEntity.ok(Map.of(
+        return ResponseEntity.ok(Map.of( //return like status
                 "liked", liked,
                 "likeCount", likeCount
         ));
@@ -155,9 +155,9 @@ public class PostController {
 
     @GetMapping("/following")
     public List<Post> getFollowingPosts(Principal principal) {
-        User user = userRepository.findByEmail(principal.getName()).orElseThrow();
+        User user = userRepository.findByEmail(principal.getName()).orElseThrow(); //get user from database
         List<User> followingUsers = followService.getAcceptedFollowing(user)
-                .stream().map(Follow::getFollowing).toList();
+                .stream().map(Follow::getFollowing).toList();  //get list of users
 
         return postRepository.findByUserInOrderByCreatedAtDesc(followingUsers);
     }
